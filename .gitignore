@@ -1,0 +1,13 @@
+.idea
+var/cache/*
+var/cache
+/var/cache/*
+/var/cache
+/db/*
+/db
+logs/*
+var/log/*
+composer.lock
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###

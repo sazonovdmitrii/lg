@@ -1,0 +1,15 @@
+easy_admin:
+    site_name: 'RoboTwits'
+    entities:
+        Users:
+            label: 'Пользователи'
+            class: App\Entity\Users
+            list:
+                fields: ['id', 'email', 'roles']
+    design:
+        brand_color: 'black'
+        menu:
+          - Users
+        assets:
+            css:
+                - '/bundles/lp/css/lp.css'

@@ -1,0 +1,12 @@
+Query:
+  type: object
+  config:
+    description: "Product Item ORM repository"
+    fields:
+      user:
+        type: "User"
+        args:
+            id:
+              description: "Resolves using the user id."
+              type: "Int"
+        resolve: "@=resolver('User', [args])"
