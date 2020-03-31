@@ -6,10 +6,17 @@ easy_admin:
             class: App\Entity\Users
             list:
                 fields: ['id', 'email', 'roles']
+        Page:
+            label: 'Страницы'
+            class: App\Entity\Page
+            controller: App\Controller\Admin\PageController
+            list:
+                fields: ['id', 'content', 'created']
     design:
         brand_color: 'black'
         menu:
           - Users
+          - Page
         assets:
             css:
                 - '/bundles/lp/css/lp.css'
