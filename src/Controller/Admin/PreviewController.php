@@ -21,12 +21,20 @@ class PreviewController extends BaseAdminController
         EntityManagerInterface $entityManager
     ) {
         $page = new Page();
+        if($pageId = $request->get('id')) {
+            $page = $pageRepository->find($pageId);
+        }
+
         $page->setContent($request->get('page'));
+
+        $filename = '/elements/preview_' . md5(time()) . '.html';
+
+        $page->setFile($filename);
+        $page->setStorage($request->get('storage'));
 
         $entityManager->persist($page);
         $entityManager->flush();
 
-        $filename = '/elements/preview_' . md5(time()) . '.html';
         $path = $this->get('kernel')->getProjectDir() . '/public' . $filename;
 
         $previewFile = fopen($path, "w");
@@ -37,5 +45,16 @@ class PreviewController extends BaseAdminController
 
         header('Location: '.$request->getSchemeAndHttpHost() . $filename);
         exit;
+    }
+
+    /**
+     * @Route("/admin/save", methods={"POST","GET","HEAD"})
+     */
+    public function save(
+        Request $request,
+        PageRepository $pageRepository,
+        EntityManagerInterface $entityManager
+    ) {
+        die('adsfasdfasd-----');
     }
 }

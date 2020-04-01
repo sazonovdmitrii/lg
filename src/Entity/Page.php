@@ -26,6 +26,16 @@ class Page
      */
     private $content;
 
+    /**
+     * @ORM\Column(type="string", length=2555555, nullable=true)
+     */
+    private $storage;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $file;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +61,30 @@ class Page
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getStorage(): ?string
+    {
+        return $this->storage;
+    }
+
+    public function setStorage(?string $storage): self
+    {
+        $this->storage = $storage;
+
+        return $this;
+    }
+
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    public function setFile(?string $file): self
+    {
+        $this->file = $file;
 
         return $this;
     }

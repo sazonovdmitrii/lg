@@ -129,14 +129,15 @@ if(typeof(Storage) !== "undefined") {
 }
 
 $( window ).load(function() {
-
 	$('#loader').fadeOut(function(){
 
 		$('#menu').animate({'left': '-190px'}, 1000);
 
 	});
-
-
+var mainStorage = JSON.parse($('#mainstorage').val());
+Object.keys(mainStorage).forEach(function(e) {
+	localStorage[e] = mainStorage[e];
+});
 	//activate previews?
 	if( enablePreview == true ) {
 
@@ -153,7 +154,7 @@ $( window ).load(function() {
 	}
 
 	var framesForLater = [];
-
+	// localStorage = JSON.parse($('#mainstorage').val());
 	for(x=0; x<=99; x++) {
 
 		if( localStorage.getItem("blocksElement"+x) !== null && localStorage.getItem("blocksFrame"+x) !== null ) {
@@ -1153,7 +1154,6 @@ function styleClick(el) {
 
 	//save button
 	$('button#saveStyling').unbind('click').bind('click', function(){
-
 		$('#styleEditor #tab1 .form-group:not(#styleElTemplate) input').each(function(){
 
 			//alert( $(this).attr('name')+":"+$(this).val() )
@@ -2624,7 +2624,7 @@ $(function(){
 
 	$('#previewModal').on('shown.bs.modal', function (e) {
 
-		$('#previewModal form input[type="hidden"]').remove();
+		// $('#previewModal form input[type="hidden"]').remove();
 
 		//grab visible page
 		$('#pageList > ul:visible').each(function(){
@@ -2731,9 +2731,75 @@ $(function(){
 			newInput = $('<input type="hidden" name="page" value="">');
 
 			$('#previewModal form').prepend( newInput );
+//here generating page
+			newInput.val( "<!DOCTYPE html><html>"+$('iframe#skeleton').contents().find('html').html()+"</html>" );
 
-			newInput.val( "<!DOCTYPE html><html>"+$('iframe#skeleton').contents().find('html').html()+"</html>" )
 
+
+
+
+
+			var exp = exp || null;
+			closeStyleEditor();
+			if(exp == null) e.preventDefault();
+			for(x=0; x<=99; x++) {
+				localStorage.removeItem("blocksElement"+x);
+				localStorage.removeItem("blocksFrame"+x);
+			}
+			localStorage.removeItem("pageNames");
+			pageCounter = 1;
+			$('#pageList > ul').each(function(){
+				theName = $(this).attr('id');
+				var blocksElement = [];
+				var blocksFrame = [];
+				c = 0;
+				$(this).find('li').each(function(){
+					blocksElement[c] = $(this).html();
+					c++;
+				})
+				c = 0;
+				$(this).find('iframe').each(function(){
+					var attr = $(this).attr('data-sandbox');
+					if (typeof attr !== typeof undefined && attr !== false) {
+						theContents = $('#sandboxes #'+attr).contents().find( pageContainer );
+					} else {
+						theContents = $(this).contents().find( pageContainer );
+					}
+					theContents.find('.frameCover').each(function(){
+						$(this).remove();
+					});
+					for( var key in editableItems ) {
+						theContents.find( key ).each(function(){
+							if( $(this).attr('style') == '' ) {
+								$(this).removeAttr('style')
+							}
+						})
+					}
+					blocksFrame[c] = theContents.html();
+					c++;
+				});
+				localStorage.removeItem("blocksElement"+pageCounter);
+				localStorage.removeItem("blocksFrame"+pageCounter);
+
+				localStorage['blocksElement'+pageCounter] = JSON.stringify(blocksElement);
+				localStorage['blocksFrame'+pageCounter] = JSON.stringify(blocksFrame);
+				if(exp != null){
+					exp['blocksElement'+pageCounter] = blocksElement;
+					exp['blocksFrame'+pageCounter] = blocksFrame;
+				}
+				pageCounter++;
+			});
+			var pageNames = [];
+			c = 0;
+			$('ul#pages li:not(#newPageLI)').each(function(){
+				pageNames[c] = $(this).find('a').text();
+				c++;
+			});
+			localStorage['pageNames'] = JSON.stringify(pageNames);
+			if(exp != null){
+				exp['pageNames'] = pageNames;
+			}
+			$('#storage').val(JSON.stringify(localStorage));
 		})
 
 	});
@@ -2761,7 +2827,6 @@ $(function(){
 
 
 	$("#markFormImp").submit(function(){
-
 		$(this).ajaxSubmit({
 			success: function(response) {
 				var answer = JSON.parse(response),
@@ -2804,7 +2869,6 @@ $(function(){
 
 		$("#dataProject").val(JSON.stringify(jsonData));
 		//$("#dataProject").attr({"value": JSON.stringify(jsonData)});
-
 		$("#markFormExp").submit();
 	});
 	$('#fileinput').on('change', function(){
@@ -3419,7 +3483,6 @@ $(function(){
 
 
 function savePage(e, exp) {
-
 	var exp = exp || null;
 
 	closeStyleEditor();
@@ -3545,7 +3608,6 @@ function savePage(e, exp) {
 	if(exp != null){
 		exp['pageNames'] = pageNames;
 	}
-
 	setPendingChanges(false)
 
 }
