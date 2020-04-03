@@ -1,0 +1,6 @@
+{% block _page_page_content_widget %}
+    <input type="hidden" name="page[content]" id="page[content]" value="{{ form.parent.vars.data.content }}"/>
+    <a href="{{ app.request.requestUri }}&mode=landogenerator" target="_blank">
+        Редактировать контент
+    </a>
+{% endblock %}

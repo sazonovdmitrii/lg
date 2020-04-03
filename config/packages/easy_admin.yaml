@@ -11,9 +11,19 @@ easy_admin:
             class: App\Entity\Page
             controller: App\Controller\Admin\PageController
             list:
-                fields: ['id', 'content', 'created']
+                fields: ['id', 'slug']
+            form:
+                fields:
+                    - { type: 'tab' , label: 'Основные' }
+                    - { property: 'slug', label: 'Адрес'}
+                    - { property: 'content', label: 'Контент', type_options: { block_name: 'page_content' }}
+
     design:
         brand_color: 'black'
+        form_theme:
+            - 'admin/form/bootstrap_3_layout.html.twig'
+            - 'admin/form/bootstrap_3_horizontal_layout.html.twig'
+            - 'admin/form/page_content.html.twig'
         menu:
           - Users
           - Page

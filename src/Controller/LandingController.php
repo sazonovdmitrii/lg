@@ -5,12 +5,12 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RootController extends AbstractController
+class LandingController extends AbstractController
 {
     /**
-     * @Route("/root", name="root")
+     * @Route("/landing/{slug}", name="landing")
      */
-    public function index()
+    public function index($slug)
     {
         return $this->render('root/index.html.twig', [
             'controller_name' => 'RootController',
