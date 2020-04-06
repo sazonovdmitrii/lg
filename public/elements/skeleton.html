@@ -87,9 +87,7 @@
         $(document).ready(function() {
             $('#feedback').submit(function(event) {
                 event.preventDefault();
-                $.post('https://www.ochkov.net/user/callback', {
-                    data: $(this).serialize()
-                }, function(response){
+                $.post('https://www.ochkov.net/user/callback', ($(this).serializeArray()), function(response){
                     console.log(response);
                 });
             });
