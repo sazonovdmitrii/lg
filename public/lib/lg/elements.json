@@ -17,7 +17,9 @@ var _Elements = {"elements": {
         {"url":"/elements/nav-share.html","height":60, "thumbnail":"/elements/thumbs/nav-share.png"},
         {"url":"/elements/nav-share-2.html","height":60, "thumbnail":"/elements/thumbs/nav-share-2.png"}
     ],
-
+	"Basket":[
+    	{"url":"/elements/add-to-basket.html","height":60, "thumbnail":"/elements/thumbs/addtobasket.png"}
+    ],
 	"Intro":[
     	{"url":"/elements/intro-half-left-app.html","height":900, "thumbnail":"/elements/thumbs/intro-half-left-app.png"},
 		{"url":"/elements/intro-half-left.html","height":721, "thumbnail":"/elements/thumbs/intro-half-left.png"},
