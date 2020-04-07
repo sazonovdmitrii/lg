@@ -135,6 +135,9 @@ $( window ).load(function() {
 
 	});
 var mainStorage = JSON.parse($('#mainstorage').val());
+if(mainStorage) {
+	localStorage.clear();
+}
 Object.keys(mainStorage).forEach(function(e) {
 	localStorage[e] = mainStorage[e];
 });
