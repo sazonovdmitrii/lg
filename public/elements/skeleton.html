@@ -40,10 +40,11 @@
     <div id="wrap">
         
     </div>
-    <input type="hidden" id="product" value="259"/>
+    <input type="hidden" id="product" value="[product_id]"/>
     <div style="display: none;" id="hidden-content">
         <form id="feedback">
             <input type="hidden" name="type" value="one_click_buy"/>
+            <input type="hidden" name="product_id" value=""/>
             <div class="form-group">
                 <label for="name">Имя</label>
                 <input type="text" class="form-control" id="name" name="name">
@@ -87,6 +88,7 @@
         $(document).ready(function() {
             $('#feedback').submit(function(event) {
                 event.preventDefault();
+                $('input[name=product_id]').val($('#product').val());
                 $.post('https://www.ochkov.net/user/callback', ($(this).serializeArray()), function(response){
                     console.log(response);
                 });

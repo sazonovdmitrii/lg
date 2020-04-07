@@ -43,6 +43,16 @@ class Page
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $product_id;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +114,30 @@ class Page
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getProductId(): ?int
+    {
+        return $this->product_id;
+    }
+
+    public function setProductId(?int $product_id): self
+    {
+        $this->product_id = $product_id;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

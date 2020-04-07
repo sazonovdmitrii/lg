@@ -16,8 +16,10 @@ easy_admin:
                 fields:
                     - { type: 'tab' , label: 'Основные' }
                     - { property: 'slug', label: 'Адрес'}
+                    - { property: 'Title', label: 'Заголовок'}
                     - { property: 'content', label: 'Контент', type_options: { block_name: 'page_content' }}
-
+                    - { type: 'tab' , label: 'API' }
+                    - { property: 'product_id', label: 'Идентификатор продукта' }
     design:
         brand_color: 'black'
         form_theme:

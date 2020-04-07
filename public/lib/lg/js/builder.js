@@ -2731,13 +2731,12 @@ $(function(){
 			newInput = $('<input type="hidden" name="page" value="">');
 
 			$('#previewModal form').prepend( newInput );
-//here generating page
-			newInput.val( "<!DOCTYPE html><html>"+$('iframe#skeleton').contents().find('html').html()+"</html>" );
+			var html = "<!DOCTYPE html><html>"+$('iframe#skeleton').contents().find('html').html()+"</html>";
 
+			var re = /\[product_id\]/gi;
 
-
-
-
+			html = html.replace(re, $('#product_id').val());
+			newInput.val( html);
 
 			var exp = exp || null;
 			closeStyleEditor();
