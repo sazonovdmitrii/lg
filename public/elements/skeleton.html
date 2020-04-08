@@ -97,8 +97,15 @@
                 event.preventDefault();
                 $('input[name=product_id]').val($('#product').val());
                 $.post('https://www.ochkov.net/user/callback', ($(this).serializeArray()), function(response){
-                    console.log(response);
+                    window.closingFancy = function() {
+                        parent.$.fancybox.close();
+                    }
+
+                    $.fancybox.close();
+                    $.fancybox.open('<div class="message"><p>Ваш телефон принят! Мы перезвоним Вам в ближайшее время.</p></div>');
+                    setTimeout(closingFancy, 5000);
                 });
+
             });
         });
     </script>
