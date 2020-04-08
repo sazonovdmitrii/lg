@@ -39,32 +39,45 @@
     <style>[style]</style>
     <!--PRELOADER-->
     <div id="wrap">
-        
+
     </div>
     <input type="hidden" id="product" value="[product_id]"/>
-    <div style="display: none;" id="hidden-content">
+    <div style="display: none; width: 500px;" id="hidden-content">
         <form id="feedback">
             <input type="hidden" name="type" value="one_click_buy"/>
             <input type="hidden" name="product_id" value=""/>
             <div class="form-group">
                 <label for="name">Имя</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="form-group">
                 <label for="surname">Фамилия</label>
-                <input type="text" class="form-control" id="surname" name="surname">
+                <input type="text" class="form-control" id="surname" name="surname" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" id="email">
+                <input type="email" class="form-control" name="email" id="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Телефон</label>
-                <input type="text" class="form-control" id="phone" name="phone">
+                <input type="text" class="form-control" id="phone" name="phone" required>
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <div class="feedback-submit">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
         </form>
     </div>
+    <style>
+        .form-group {
+            padding-bottom: 10px;
+        }
+        input.form-control {
+            padding: 10px 25px 20px 0;
+        }
+        .feedback-submit {
+            text-align: center;
+        }
+    </style>
     <!-- /#wrap -->
     <!-- JavaScript -->
     <script src="scripts/jquery-1.11.2.min.js"></script>
