@@ -129,18 +129,24 @@ if(typeof(Storage) !== "undefined") {
 }
 
 $( window ).load(function() {
+	$("#custom-css-data").on('change keyup paste', function() {
+		$('a.actionButtons').each(function(){
+			$(this).removeClass('disabled');
+		});
+	});
+	$('#custom-css-data').val(localStorage['customCss']);
 	$('#loader').fadeOut(function(){
 
 		$('#menu').animate({'left': '-190px'}, 1000);
 
 	});
-var mainStorage = JSON.parse($('#mainstorage').val());
-if(mainStorage) {
-	localStorage.clear();
-}
-Object.keys(mainStorage).forEach(function(e) {
-	localStorage[e] = mainStorage[e];
-});
+	var mainStorage = JSON.parse($('#mainstorage').val());
+	if(mainStorage) {
+		localStorage.clear();
+	}
+	Object.keys(mainStorage).forEach(function(e) {
+		localStorage[e] = mainStorage[e];
+	});
 	//activate previews?
 	if( enablePreview == true ) {
 
@@ -2739,7 +2745,12 @@ $(function(){
 			var re = /\[product_id\]/gi;
 
 			html = html.replace(re, $('#product_id').val());
+
+			var styleRe = /\[style\]/gi;
+			html = html.replace(styleRe,  $('#custom-css-data').val());
+
 			newInput.val( html);
+
 
 			var exp = exp || null;
 			closeStyleEditor();
@@ -2749,6 +2760,7 @@ $(function(){
 				localStorage.removeItem("blocksFrame"+x);
 			}
 			localStorage.removeItem("pageNames");
+			localStorage.removeItem("customCss");
 			pageCounter = 1;
 			$('#pageList > ul').each(function(){
 				theName = $(this).attr('id');
@@ -2798,6 +2810,7 @@ $(function(){
 				c++;
 			});
 			localStorage['pageNames'] = JSON.stringify(pageNames);
+			localStorage['customCss'] = $('#custom-css-data').val();
 			if(exp != null){
 				exp['pageNames'] = pageNames;
 			}

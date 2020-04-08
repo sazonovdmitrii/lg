@@ -1007,6 +1007,10 @@ fieldset[disabled] .btn-primary.active {
 #modalHTMLEditor .modal-body .ace_editor{
     border-radius: 3px 3px 0 0;
 }
-
+#custom-css textarea {
+    font-size: 12px;
+    width: 300px;
+    height: 200px;
+}
 
 /* end modals */
