@@ -100,6 +100,7 @@
     <script src="scripts/jquery.fancybox.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            localStorage['basket'] = '';
             $('.order-button-trigger a').click(function(){
                 $('input[name=product_id]').val($(this).data('product'));
             });
@@ -115,7 +116,23 @@
                     $.fancybox.open('<div class="message"><p>Ваш телефон принят! Мы перезвоним Вам в ближайшее время.</p></div>');
                     setTimeout(closingFancy, 5000);
                 });
+            });
+            $('.add-to-cart').on('click', function(){
+                var productId = $(this).data('product');
+                var basket = {};
+                if(localStorage['basket']) {
+                    basket = JSON.parse(localStorage['basket']);
+                }
 
+                if(productId in basket) {
+                    basket[productId]['qty'] += 1;
+                } else {
+                    basket[productId] = {};
+                    basket[productId]['qty'] = 1;
+                }
+
+                basket[productId]['name'] = $(this).data('name');
+                localStorage['basket'] = JSON.stringify(basket);
             });
         });
     </script>
