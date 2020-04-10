@@ -18,7 +18,7 @@
     <link href="css/iconfont-style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css">
     <!-- WOW Animate-->
-    <link href="scripts/animations/animate.css" rel="stylesheet" />
+    <link href="scripts/animations/animate.css" rel="stylesheet"/>
     <!-- Datepicker Styles -->
     <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <!-- Favicons -->
@@ -29,113 +29,131 @@
     <!--CUSTOM-JS-->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
-      <script src="scripts/html5shiv.js"></script>
-      <script src="scripts/respond.min.js"></script>
+    <script src="scripts/html5shiv.js"></script>
+    <script src="scripts/respond.min.js"></script>
     <![endif]-->
     <!--headerIncludes-->
 </head>
 
 <body data-spy="scroll" data-target=".navMenuCollapse">
-    <style>[style]</style>
-    <!--PRELOADER-->
-    <div id="wrap">
+<style>[style]</style>
+<!--PRELOADER-->
+<div id="wrap">
+    <a href="#basket" class="fancybox">
+        <div id="rec176069065" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="706">
+            <div class="t706__carticon t706__carticon_showed" style="">
+                <!--                <div class="t706__carticon-text t-name t-name_xs">=&nbsp;4 400&nbsp;р.</div>-->
+                <div class="t706__carticon-wrapper">
+                    <div class="t706__carticon-imgwrap">
+                        <svg class="t706__carticon-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                            <descr style="color:#bebebe;">Cart</descr>
+                            <path fill="none" stroke-width="2" stroke-miterlimit="10" d="M44 18h10v45H10V18h10z"></path>
+                            <path fill="none" stroke-width="2" stroke-miterlimit="10"
+                                  d="M22 24V11c0-5.523 4.477-10 10-10s10 4.477 10 10v13"></path>
+                        </svg>
+                    </div>
+                    <div class="t706__carticon-counter"></div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+<input type="hidden" id="product" value="[product_id]"/>
+<div style="display: none; width: 660px;" id="basket">
+    <div class="t706__cartwin-content">
+        <div class="t706__cartwin-top">
+            <div class="t706__cartwin-heading t-name t-name_xl">Ваш заказ</div>
+        </div>
+        <div class="t706__cartwin-products">
 
+        </div>
+        <div class="t706__cartwin-bottom">
+            <div class="t706__cartwin-prodamount-wrap t-descr t-descr_sm" style="display: block;"><span
+                    class="t706__cartwin-prodamount-label">Сумма:&nbsp;</span><span
+                    class="t706__cartwin-prodamount"></span> р.
+            </div>
+        </div>
+        <div class="t706__orderform ">
+            <form id="checkout">
+                <input type="hidden" name="type" value="one_click_buy"/>
+                <input type="hidden" name="product_id" value=""/>
+                <input type="hidden" name="comment" id="comment" value=""/>
+                <div class="t-form__inputsbox">
+                    <div class="t-input-group t-input-group_nm">
+                        <div class="t-input-block">
+                            <input type="text" name="name" class="t-input js-tilda-rule" placeholder="Ваше имя"
+                                   required>
+                            <div class="t-input-error"></div>
+                        </div>
+                    </div>
+                    <div class="t-input-group t-input-group_nm">
+                        <div class="t-input-block">
+                            <input type="text" name="phone" class="t-input js-tilda-rule"
+                                   placeholder="Ваш номер телефона" required>
+                            <div class="t-input-error"></div>
+                        </div>
+                    </div>
+                    <div class="t-input-group t-input-group_em">
+                        <div class="t-input-block">
+                            <input type="email" name="email" class="t-input js-tilda-rule" placeholder="Email" required>
+                            <div class="t-input-error"></div>
+                        </div>
+                    </div>
+                    <div class="t-form__submit">
+                        <button type="submit" class="t-submit">
+                            Отправить
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <input type="hidden" id="product" value="[product_id]"/>
-    <div style="display: none; width: 500px;" id="hidden-content">
-        <form id="feedback">
-            <input type="hidden" name="type" value="one_click_buy"/>
-            <input type="hidden" name="product_id" value=""/>
-            <div class="form-group">
-                <label for="name">Имя</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="surname">Фамилия</label>
-                <input type="text" class="form-control" id="surname" name="surname" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Телефон</label>
-                <input type="text" class="form-control" id="phone" name="phone" required>
-            </div>
-            <div class="feedback-submit">
-                <button type="submit" class="btn btn-primary">Отправить</button>
-            </div>
-        </form>
-    </div>
-    <style>
-        .form-group {
-            padding-bottom: 10px;
-        }
-        input.form-control {
-            padding: 10px 25px 20px 0;
-        }
-        .feedback-submit {
-            text-align: center;
-        }
-    </style>
-    <!-- /#wrap -->
-    <!-- JavaScript -->
-    <script src="scripts/jquery-1.11.2.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/jquery.validate.min.js"></script>
-    <script src="scripts/smoothscroll.js"></script>
-    <script src="scripts/jquery.smooth-scroll.min.js"></script>
-    <script src="scripts/placeholders.jquery.min.js"></script>
-    <script src="scripts/jquery.magnific-popup.min.js"></script>
-    <script src="scripts/jquery.counterup.min.js"></script>
-    <script src="scripts/waypoints.min.js"></script>
-    <script src="scripts/video.js"></script>
-    <script src="scripts/bigvideo.js"></script>
-    <script src="scripts/animations/wow.min.js"></script>
-    <script src="scripts/jquery.jCounter-0.1.4.js"></script>
-    <script src="scripts/bootstrap-datepicker.min.js"></script>
-    <script src="scripts/audio.min.js"></script>
-    <script src="scripts/goodshare.min.js"></script>
-    <script src="scripts/custom.js"></script>
-    <script src="scripts/jquery.fancybox.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            localStorage['basket'] = '';
-            $('.order-button-trigger a').click(function(){
-                $('input[name=product_id]').val($(this).data('product'));
-            });
-            $('#feedback').submit(function(event) {
-                event.preventDefault();
-                $('input[name=product_id]').val($('#product').val());
-                $.post('https://www.ochkov.net/user/callback', ($(this).serializeArray()), function(response){
-                    window.closingFancy = function() {
-                        parent.$.fancybox.close();
-                    }
-
-                    $.fancybox.close();
-                    $.fancybox.open('<div class="message"><p>Ваш телефон принят! Мы перезвоним Вам в ближайшее время.</p></div>');
-                    setTimeout(closingFancy, 5000);
-                });
-            });
-            $('.add-to-cart').on('click', function(){
-                var productId = $(this).data('product');
-                var basket = {};
-                if(localStorage['basket']) {
-                    basket = JSON.parse(localStorage['basket']);
-                }
-
-                if(productId in basket) {
-                    basket[productId]['qty'] += 1;
-                } else {
-                    basket[productId] = {};
-                    basket[productId]['qty'] = 1;
-                }
-
-                basket[productId]['name'] = $(this).data('name');
-                localStorage['basket'] = JSON.stringify(basket);
-            });
-        });
-    </script>
+</div>
+<div style="display: none; width: 500px;" id="hidden-content">
+    <form id="feedback">
+        <input type="hidden" name="type" value="one_click_buy"/>
+        <input type="hidden" name="product_id" value=""/>
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="surname">Фамилия</label>
+            <input type="text" class="form-control" id="surname" name="surname" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Телефон</label>
+            <input type="text" class="form-control" id="phone" name="phone" required>
+        </div>
+        <div class="feedback-submit">
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </div>
+    </form>
+</div>
+<!-- /#wrap -->
+<!-- JavaScript -->
+<script src="scripts/jquery-1.11.2.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/jquery.validate.min.js"></script>
+<script src="scripts/smoothscroll.js"></script>
+<script src="scripts/jquery.smooth-scroll.min.js"></script>
+<script src="scripts/placeholders.jquery.min.js"></script>
+<script src="scripts/jquery.magnific-popup.min.js"></script>
+<script src="scripts/jquery.counterup.min.js"></script>
+<script src="scripts/waypoints.min.js"></script>
+<script src="scripts/video.js"></script>
+<script src="scripts/bigvideo.js"></script>
+<script src="scripts/animations/wow.min.js"></script>
+<script src="scripts/jquery.jCounter-0.1.4.js"></script>
+<script src="scripts/bootstrap-datepicker.min.js"></script>
+<script src="scripts/audio.min.js"></script>
+<script src="scripts/goodshare.min.js"></script>
+<script src="scripts/custom.js"></script>
+<script src="scripts/jquery.fancybox.min.js"></script>
+<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 </body>
-
 </html>

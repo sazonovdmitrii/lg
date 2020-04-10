@@ -1,6 +1,157 @@
 $(window).load(function () {
+    console.log(localStorage['basket']);
+
 
     "use strict";
+
+    function initCartElements() {
+        $('.t706__product-minus').click(function() {
+            var e = $(this);
+            var qtyE = e.parent().find('.t706__product-quantity');
+            var qty = qtyE.html();
+            var productId = e.parents('.t706__product').data('cart-product-i');
+            if(qty > 1) {
+                if(localStorage['basket']) {
+                    var basket = JSON.parse(localStorage['basket']);
+                    if(basket[productId]) {
+                        qty--;
+                        var item = basket[productId];
+                        basket[productId]['qty'] = qty;
+                        localStorage['basket'] = JSON.stringify(basket);
+                        updateCartItems();
+                        initCartElements();
+                    }
+                }
+            }
+        });
+        $('.t706__product-plus').click(function() {
+            var e = $(this);
+            var qtyE = e.parent().find('.t706__product-quantity');
+            var qty = qtyE.html();
+            var productId = e.parents('.t706__product').data('cart-product-i');
+
+            if(localStorage['basket']) {
+                var basket = JSON.parse(localStorage['basket']);
+                if(basket[productId]) {
+                    qty++;
+                    var item = basket[productId];
+                    basket[productId]['qty'] = qty;
+                    localStorage['basket'] = JSON.stringify(basket);
+                    updateCartItems();
+                    initCartElements();
+                }
+            }
+        });
+        $('.t706__product-del').click(function() {
+            var e = $(this);
+            var productId = e.parent().data('cart-product-i');
+
+            if(localStorage['basket']) {
+                var basket = JSON.parse(localStorage['basket']);
+                if(basket[productId]) {
+                    delete basket[productId];
+                    localStorage['basket'] = JSON.stringify(basket);
+                    updateCartItems();
+                    initCartElements();
+                }
+            }
+        });
+    }
+
+    $(".fancybox").fancybox({
+        afterLoad: function() {
+            initCartElements();
+            $('#checkout').submit(function (event) {
+                $('#comment').val(localStorage['basket']);
+                event.preventDefault();
+                $.post('https://www.ochkov.net/user/callback', ($(this).serializeArray()), function (response) {
+                    window.closingFancy = function () {
+                        parent.$.fancybox.close();
+                    }
+                    $.fancybox.close();
+                    $.fancybox.open('<div class="message"><p>Ваш заказ принят! Мы перезвоним Вам в ближайшее время.</p></div>');
+                    setTimeout(closingFancy, 5000);
+                });
+            });
+        }
+    });
+
+    $('.order-button-trigger a').click(function () {
+        $('input[name=product_id]').val($(this).data('product'));
+    });
+    $('#feedback').submit(function (event) {
+        event.preventDefault();
+        $('input[name=product_id]').val($('#product').val());
+        $.post('https://www.ochkov.net/user/callback', ($(this).serializeArray()), function (response) {
+            window.closingFancy = function () {
+                parent.$.fancybox.close();
+            }
+
+            $.fancybox.close();
+            $.fancybox.open('<div class="message"><p>Ваш телефон принят! Мы перезвоним Вам в ближайшее время.</p></div>');
+            setTimeout(closingFancy, 5000);
+        });
+    });
+
+    $('.add-to-cart').on('click', function () {
+        var productId = $(this).data('product');
+        var basket = {};
+        if (localStorage['basket']) {
+            basket = JSON.parse(localStorage['basket']);
+        }
+
+        if (productId in basket) {
+            basket[productId]['qty'] += 1;
+        } else {
+            basket[productId] = {};
+            basket[productId]['qty'] = 1;
+        }
+
+        basket[productId]['name'] = $(this).data('name');
+        basket[productId]['price'] = $(this).data('price');
+        basket[productId]['image'] = $(this).data('image');
+        basket[productId]['id'] = $(this).data('product');
+        localStorage['basket'] = JSON.stringify(basket);
+        updateCartItems();
+    });
+
+    updateCartItems();
+
+    function updateCartItems() {
+        $(".t706__cartwin-products").html('');
+        var qty = 0;
+        var totalPrice = 0;
+        if('basket' in localStorage) {
+            var basket = JSON.parse(localStorage['basket']);
+            $.each(basket, function(id, item) {
+                qty += item.qty;
+                var totalItemPrice = item.qty * item.price;
+                item.totalItemPrice = totalItemPrice;
+                totalPrice += totalItemPrice;
+                var markup = "<div class=\"t706__product\" data-cart-product-i=\"${id}\">\n" +
+                    "                <div class=\"t706__product-thumb\">\n" +
+                    "                    <div class=\"t706__product-imgdiv\"\n" +
+                    "                         style=\"background-image:url(${image});\"></div>\n" +
+                    "                </div>\n" +
+                    "                <div class=\"t706__product-title t-descr t-descr_sm\">${name}</div>\n" +
+                    "                <div class=\"t706__product-plusminus t-descr t-descr_sm\"><span class=\"t706__product-minus\"><img\n" +
+                    "                        src=\"https://static.tildacdn.com/lib/linea/c8eecd27-9482-6c4f-7896-3eb09f6a1091/arrows_circle_minus.svg\"\n" +
+                    "                        style=\"width:16px;height:16px;border:0;\"></span><span\n" +
+                    "                        class=\"t706__product-quantity\">${qty}</span><span class=\"t706__product-plus\"><img\n" +
+                    "                        src=\"https://static.tildacdn.com/lib/linea/c47d1e0c-6880-dc39-ae34-521197f7fba7/arrows_circle_plus.svg\"\n" +
+                    "                        style=\"width:16px;height:16px;border:0;\"></span></div>\n" +
+                    "                <div class=\"t706__product-amount t-descr t-descr_sm\">${totalItemPrice} &nbsp;р.</div>\n" +
+                    "                <div class=\"t706__product-del\"><img\n" +
+                    "                        src=\"https://static.tildacdn.com/lib/linea/1bec3cd7-e9d1-2879-5880-19b597ef9f1a/arrows_circle_remove.svg\"\n" +
+                    "                        style=\"width:20px;height:20px;border:0;\"></div>\n" +
+                    "            </div>";
+                $.template( "movieTemplate", markup );
+                $.tmpl( "movieTemplate", item ).appendTo( ".t706__cartwin-products" );
+            });
+        }
+        $('.t706__carticon-counter').html(qty);
+        $('.t706__cartwin-prodamount').html(totalPrice);
+    }
 
     //------------------------------------------------------------------------
     //						PRELOADER SCRIPT
