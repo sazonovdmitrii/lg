@@ -1011,6 +1011,7 @@ fieldset[disabled] .btn-primary.active {
     font-size: 12px;
     width: 300px;
     height: 200px;
+    display:none;
 }
 
 /* end modals */
