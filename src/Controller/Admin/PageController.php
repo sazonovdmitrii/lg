@@ -2,11 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Page;
 use App\Service\OnService;
 use Doctrine\ORM\EntityManager;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
-use Symfony\Component\HttpFoundation\Response;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Symfony\Component\HttpFoundation\Response;
 
 class PageController extends BaseAdminController
 {
@@ -24,7 +25,7 @@ class PageController extends BaseAdminController
 
     protected function renderTemplate($actionName, $templatePath, array $parameters = array())
     {
-        if($actionName == 'edit' && $this->request->get('mode')) {
+        if ($actionName == 'edit' && $this->request->get('mode')) {
             $templatePath = $this->_template;
         }
         return $this->render($templatePath, $parameters);
@@ -34,12 +35,12 @@ class PageController extends BaseAdminController
     {
         $this->dispatch(EasyAdminEvents::PRE_EDIT);
 
-        $id = $this->request->query->get('id');
+        $id        = $this->request->query->get('id');
         $easyadmin = $this->request->attributes->get('easyadmin');
-        $entity = $easyadmin['item'];
+        $entity    = $easyadmin['item'];
 
         if ($this->request->isXmlHttpRequest() && $property = $this->request->query->get('property')) {
-            $newValue = 'true' === mb_strtolower($this->request->query->get('newValue'));
+            $newValue       = 'true' === mb_strtolower($this->request->query->get('newValue'));
             $fieldsMetadata = $this->entity['list']['fields'];
 
             if (!isset($fieldsMetadata[$property]) || 'toggle' !== $fieldsMetadata[$property]['dataType']) {
@@ -49,12 +50,12 @@ class PageController extends BaseAdminController
             $this->updateEntityProperty($entity, $property, $newValue);
 
             // cast to integer instead of string to avoid sending empty responses for 'false'
-            return new Response((int) $newValue);
+            return new Response((int)$newValue);
         }
 
         $fields = $this->entity['edit']['fields'];
 
-        $editForm = $this->executeDynamicMethod('create<EntityName>EditForm', array($entity, $fields));
+        $editForm   = $this->executeDynamicMethod('create<EntityName>EditForm', array($entity, $fields));
         $deleteForm = $this->createDeleteForm($this->entity['name'], $id);
 
         $editForm->handleRequest($this->request);
@@ -68,9 +69,10 @@ class PageController extends BaseAdminController
 
             $this->onService
                 ->setContent([
-                    'slug' => $entity->getSlug(),
-                    'content' => $entity->getContent()
-                ])
+                        'slug'    => $entity->getSlug(),
+                        'content' => $entity->getContent()
+                    ]
+                )
                 ->getData();
 
             return $this->redirectToReferrer();
@@ -79,12 +81,36 @@ class PageController extends BaseAdminController
         $this->dispatch(EasyAdminEvents::POST_EDIT);
 
         $parameters = array(
-            'form' => $editForm->createView(),
+            'form'          => $editForm->createView(),
             'entity_fields' => $fields,
-            'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'entity'        => $entity,
+            'delete_form'   => $deleteForm->createView(),
         );
 
         return $this->executeDynamicMethod('render<EntityName>Template', array('edit', $this->entity['templates']['edit'], $parameters));
+    }
+
+    public function copyAction()
+    {
+
+        $id     = $this->request->query->get('id');
+        $entity = $this->em->getRepository(Page::class)->find($id);
+
+        $page = new Page();
+        $page->setContent($entity->getContent());
+        $page->setStorage($entity->getStorage());
+        $page->setFile($entity->getFile());
+        $page->setProductId($entity->getProductId());
+        $page->setSlug($entity->getSlug());
+        $page->setTitle($entity->getTitle());
+
+        $this->em->persist($page);
+        $this->em->flush();
+
+        return $this->redirectToRoute('easyadmin', array(
+                'action' => 'list',
+                'entity' => $this->request->query->get('entity'),
+            )
+        );
     }
 }

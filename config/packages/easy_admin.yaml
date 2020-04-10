@@ -12,6 +12,7 @@ easy_admin:
             controller: App\Controller\Admin\PageController
             list:
                 fields: ['id', 'slug']
+                actions: ['copy']
             form:
                 fields:
                     - { type: 'tab' , label: 'Основные' }
