@@ -1,6 +1,4 @@
 $(window).load(function () {
-    console.log(localStorage['basket']);
-
 
     "use strict";
 
@@ -113,6 +111,7 @@ $(window).load(function () {
         basket[productId]['id'] = $(this).data('product');
         localStorage['basket'] = JSON.stringify(basket);
         updateCartItems();
+        $('#cart-fancybox').trigger('click');
     });
 
     updateCartItems();
