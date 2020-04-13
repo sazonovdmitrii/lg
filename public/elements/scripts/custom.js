@@ -56,6 +56,33 @@ $(window).load(function () {
         });
     }
 
+    $('.fancybox-show-item').fancybox({
+        width: "100%",
+        margin: [0, 0, 0, 100],
+        beforeLoad: function(e) {
+            $.get('https://www.ochkov.net/api/product_item/' + this.opts.id + '/', {}, function(response) {
+                var markup = $('#show-item');
+                $.template( "movieTemplate", markup );
+                $('#show-item').html($.tmpl( "movieTemplate", response ));
+                $('#imageGallery').lightSlider({
+                    gallery:true,
+                    item:1,
+                    loop:true,
+                    thumbItem:9,
+                    slideMargin:0,
+                    thumbWidth:50,
+                    enableDrag: false,
+                    currentPagerPosition:'left',
+                    onSliderLoad: function(el) {
+                        el.lightGallery({
+                            selector: '#imageGallery .lslide'
+                        });
+                    }
+                });
+            });
+        }
+    });
+
     $(".fancybox").fancybox({
         afterLoad: function() {
             initCartElements();
