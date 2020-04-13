@@ -60,10 +60,38 @@ $(window).load(function () {
         width: "100%",
         margin: [0, 0, 0, 100],
         beforeLoad: function(e) {
-            $.get('https://www.ochkov.net/api/product_item/' + this.opts.id + '/', {}, function(response) {
+            $('.t754__container').css('display', 'none');
+            $.get('/test.json', {}, function(response) {
                 var markup = $('#show-item');
                 $.template( "movieTemplate", markup );
                 $('#show-item').html($.tmpl( "movieTemplate", response ));
+
+
+                $('.add-to-cart').on('click', function () {
+                    var productId = $(this).data('product');
+                    var basket = {};
+                    if (localStorage['basket']) {
+                        basket = JSON.parse(localStorage['basket']);
+                    }
+
+                    if (productId in basket) {
+                        basket[productId]['qty'] += 1;
+                    } else {
+                        basket[productId] = {};
+                        basket[productId]['qty'] = 1;
+                    }
+
+                    basket[productId]['name'] = $(this).data('name');
+                    basket[productId]['price'] = $(this).data('price');
+                    basket[productId]['image'] = $(this).data('image');
+                    basket[productId]['id'] = $(this).data('product');
+                    localStorage['basket'] = JSON.stringify(basket);
+                    updateCartItems();
+                    $('#cart-fancybox').trigger('click');
+                });
+
+
+                $('.t754__container').css('display', 'block');
                 $('#imageGallery').lightSlider({
                     gallery:true,
                     item:1,
