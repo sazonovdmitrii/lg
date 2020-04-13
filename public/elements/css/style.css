@@ -4196,21 +4196,31 @@ input.form-control {
 .t754__container {
     padding: 40px 20px;
 }
-.t-col_6 {
+/*.t-col_6 {
     max-width: 560px;
-}
+}*/
 .t-col {
     display: inline;
     float: left;
-    margin-left: 20px;
-    margin-right: 20px;
+    /*margin-left: 20px;*/
+    /*margin-right: 20px;*/
     width: 100%;
 }
 .t-align_left {
     text-align: left;
 }
-.t-col_6 {
-    max-width: 560px;
+.t754__col_left.t-col_6 {
+    /*max-width: 560px;*/
+    box-sizing: border-box;
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+}
+.t754__col_right {
+    /*width: 100%;*/
+    box-sizing: border-box;
+    display: inline-block;
+    width: 48%;
 }
 .t-slds {
     position: relative;
@@ -4336,4 +4346,11 @@ input.form-control {
 }
 form {
     border-top: 0px;
+}
+.lSSlideOuter .lSPager.lSGallery li {
+    height: 60px;
+    overflow: hidden;
+}
+.lSPager.lSGallery {
+    margin: 0 auto;
 }
