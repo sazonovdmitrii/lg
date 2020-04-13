@@ -4329,3 +4329,11 @@ input.form-control {
 .t754__price.t754__price-item.t-name.t-name_md {
     font-size: 25px !important;
 }
+#custom-css textarea {
+    font-size: 12px;
+    width: 300px;
+    height: 200px;
+}
+form {
+    border-top: 0px;
+}
