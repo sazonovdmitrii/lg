@@ -2749,6 +2749,10 @@ $(function(){
 			var styleRe = /\[style\]/gi;
 			html = html.replace(styleRe,  $('#custom-css-data').val());
 
+			var re = /\[title\]/gi;
+
+			html = html.replace(re, $('#title').val());
+
 			newInput.val( html);
 
 
