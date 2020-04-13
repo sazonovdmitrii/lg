@@ -4354,3 +4354,11 @@ form {
 .lSPager.lSGallery {
     margin: 0 auto;
 }
+.editContent {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.col-md-offset-1 {
+    padding-left: 0px;
+    padding-right: 0px;
+}

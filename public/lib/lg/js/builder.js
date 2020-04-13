@@ -2753,6 +2753,10 @@ $(function(){
 
 			html = html.replace(re, $('#title').val());
 
+			var re = /\[gtm\]/gi;
+
+			html = html.replace(re, $('#gtm').val());
+
 			newInput.val( html);
 
 

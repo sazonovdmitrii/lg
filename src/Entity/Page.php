@@ -53,6 +53,11 @@ class Page
      */
     private $title;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $gtm;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +143,18 @@ class Page
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getGtm(): ?string
+    {
+        return $this->gtm;
+    }
+
+    public function setGtm(?string $gtm): self
+    {
+        $this->gtm = $gtm;
 
         return $this;
     }
