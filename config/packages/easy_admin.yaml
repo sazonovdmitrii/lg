@@ -21,6 +21,8 @@ easy_admin:
                     - { property: 'content', label: 'Контент', type_options: { block_name: 'page_content' }}
                     - { type: 'tab' , label: 'API' }
                     - { property: 'product_id', label: 'Идентификатор продукта' }
+                    - { type: 'tab' , label: 'Цели' }
+                    - { property: 'gtm', label: 'GTM' }
     design:
         brand_color: 'black'
         form_theme:
