@@ -55,6 +55,11 @@ $(window).load(function () {
             }
         });
     }
+    function closeFancy() {
+        $('.t754__close-text-wrapper').click(function(){
+            parent.$.fancybox.close();
+        });
+    }
 
     $('.fancybox-show-item').fancybox({
         width: "100%",
@@ -103,10 +108,10 @@ $(window).load(function () {
                     enableDrag: false,
                     currentPagerPosition:'left',
                     onSliderLoad: function(el) {
-                        el.lightGallery({
-                            selector: '#imageGallery .lslide'
+                        $('[data-type=fancybox-image]').click(function(){
+                            $.fancybox.open($(this).clone().attr('style', '').html());
                         });
-                    }
+                    },
                 });
             });
         }

@@ -294,6 +294,7 @@
                         $children.css(property, slideWidth + 'px');
                     }
                     $children.css(gutter, settings.slideMargin + 'px');
+                    $children.attr('data-type', 'fancybox-image');
                     w = refresh.calWidth(false);
                     $el.css(property, w + 'px');
                     if (settings.loop === true && settings.mode === 'slide') {
@@ -365,7 +366,7 @@
                                 i = i + 1;
                                 var minPgr = 2;
                                 if (settings.autoWidth) {
-                                    pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
+                                    pagers += '<li><a  href="#">' + (i + 1) + '</a></li>';
                                     minPgr = 1;
                                 }
                                 if (i < minPgr) {

@@ -4401,6 +4401,7 @@ form {
     }
     .lSPager.lSGallery {
         margin: 0 auto !important;
+        margin-top: 20px;
     }
     .lslide img {
         max-width: 300px !important;
@@ -4441,3 +4442,4 @@ form {
     content: "← ";
     font-family: Arial, Helvetica, sans-serif;
 }
+
