@@ -2755,6 +2755,9 @@ $(function(){
 			var GTMre = /\<\!\-\-gtm\-\-\>/gi;
 			html = html.replace(GTMre, $('#gtm').val());
 
+			var slugRe = /\[slug\]/gi;
+			html = html.replace(slugRe,  $('#slug').val());
+
 			newInput.val( html);
 
 

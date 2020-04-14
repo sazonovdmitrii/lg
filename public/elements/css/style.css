@@ -4362,3 +4362,47 @@ form {
     padding-left: 0px;
     padding-right: 0px;
 }
+@media (max-width: 992px) {
+    .zaschita-zdorovya nav .container {
+        width: 94%;
+    }
+}
+.col-sm-4 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.img-responsive {
+    margin: 0 auto;
+}
+#contact-half-3 .col-md-3 {
+    margin: 0 auto;
+}
+#contact-half-3 .btn-block {
+    width: 85%;
+}
+@media (max-width: 992px) {
+    .t754__col_left.t-col_6
+    {
+        width: 100%;
+    }
+    .t754__col_right {
+        width: 100%;
+    }
+    .t754__title.t-name.t-name_xl.js-product-name {
+        text-align:center;
+    }
+    .t754__price-wrapper {
+        text-align:center;
+    }
+    .t754__btn-wrapper .add-to-cart {
+        text-align: center;
+    }
+    .t754__descr.t-descr.t-descr_xxs {
+        text-align: center;
+    }
+    .lSPager.lSGallery {
+        margin: 0 auto !important;
+    }
+
+
+}
