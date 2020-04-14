@@ -132,14 +132,16 @@ $(window).load(function () {
                         gtmProducts.push({
                             'name': product.name,
                             'id': id,
-                            'price': product.price * product.qty,
+                            'revenue': product.price * product.qty,
+                            'affiliation': 'Online Store',
+                            'price': product.price,
+                            'quantity': product.qty,
                             'position': position
                         });
                     });
                     dataLayer.push({
                         'ecommerce': {
-                            'currencyCode': 'RUB',
-                            'impressions': gtmProducts
+                            'purchase': gtmProducts
                         }
                     });
                 });
