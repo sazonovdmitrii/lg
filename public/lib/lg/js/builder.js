@@ -2092,7 +2092,7 @@ $(function(){
 	//use function call to make the ULs sortable
 	makeSortable( $('#pageList ul#page1') );
 
-	//second menu animation		
+	//second menu animation
 	$('#menu #main #elements').on('click', 'a:not(.btn)', function(){
 
 		$('#menu #main a').removeClass('active');
@@ -2710,7 +2710,6 @@ $(function(){
 					theIframe = document.getElementById("skeleton");
 
 					scripts.each(function(){
-
 						if( $(this).text() != '' ) {//script tags with content
 
 							var script = theIframe.contentWindow.document.createElement("script");
@@ -2753,9 +2752,8 @@ $(function(){
 
 			html = html.replace(re, $('#title').val());
 
-			var re = /\[gtm\]/gi;
-
-			html = html.replace(re, $('#gtm').val());
+			var GTMre = /\<\!\-\-gtm\-\-\>/gi;
+			html = html.replace(GTMre, $('#gtm').val());
 
 			newInput.val( html);
 
