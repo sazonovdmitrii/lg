@@ -106,6 +106,7 @@ $(window).load(function () {
                     slideMargin:0,
                     thumbWidth:50,
                     enableDrag: false,
+                    controls: true,
                     currentPagerPosition:'left',
                     onSliderLoad: function(el) {
                         $('[data-type=fancybox-image]').click(function(){
