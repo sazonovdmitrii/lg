@@ -4381,8 +4381,7 @@ form {
     width: 85%;
 }
 @media (max-width: 992px) {
-    .t754__col_left.t-col_6
-    {
+    .t754__col_left.t-col_6 {
         width: 100%;
     }
     .t754__col_right {
@@ -4403,6 +4402,19 @@ form {
     .lSPager.lSGallery {
         margin: 0 auto !important;
     }
-
-
+    .lslide img {
+        max-width: 300px !important;
+    }
+    nav .container {
+        width: 94%;
+    }
+}
+@media (min-width: 768px) {
+    .col-sm-4 {
+        width: 30.333333%;
+    }
+    .col-sm-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
