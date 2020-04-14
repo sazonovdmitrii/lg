@@ -4417,4 +4417,10 @@ form {
         padding-left: 15px;
         padding-right: 15px;
     }
+    .post {
+        height: 840px;
+    }
+}
+.t754__price-value.old {
+    text-decoration: line-through;
 }

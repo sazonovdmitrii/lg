@@ -61,7 +61,8 @@ $(window).load(function () {
         margin: [0, 0, 0, 100],
         beforeLoad: function(e) {
             $('.t754__container').css('display', 'none');
-            $.get('/test.json', {}, function(response) {
+            // $.get('/test.json', {}, function(response) {
+            $.get('https://www.ochkov.net/api/product_item/' + this.opts.id + '/', {}, function(response) {
                 var markup = $('#show-item');
                 $.template( "movieTemplate", markup );
                 $('#show-item').html($.tmpl( "movieTemplate", response ));
@@ -140,6 +141,7 @@ $(window).load(function () {
                         });
                     });
                     dataLayer.push({
+                        'event': 'purchase',
                         'ecommerce': {
                             'purchase': gtmProducts
                         }
