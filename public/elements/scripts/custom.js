@@ -124,6 +124,24 @@ $(window).load(function () {
                     $.fancybox.close();
                     $.fancybox.open('<div class="message"><p>Ваш заказ принят! Мы перезвоним Вам в ближайшее время.</p></div>');
                     setTimeout(closingFancy, 5000);
+                    var products = JSON.parse($('#comment').val());
+                    var gtmProducts = [];
+                    var position = 0;
+                    $.each(products, function(id, product){
+                        position++;
+                        gtmProducts.push({
+                            'name': product.name,
+                            'id': id,
+                            'price': product.price * product.qty,
+                            'position': position
+                        });
+                    });
+                    dataLayer.push({
+                        'ecommerce': {
+                            'currencyCode': 'RUB',
+                            'impressions': gtmProducts
+                        }
+                    });
                 });
             });
         }
