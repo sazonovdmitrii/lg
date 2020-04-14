@@ -4424,3 +4424,20 @@ form {
 .t754__price-value.old {
     text-decoration: line-through;
 }
+.t754__close-text-wrapper {
+    z-index: 999;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+.t754__close-text {
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: inline-block;
+    opacity: .8;
+    font-weight: 400;
+}
+.t754__close-text::before {
+    content: "← ";
+    font-family: Arial, Helvetica, sans-serif;
+}
