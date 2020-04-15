@@ -23,6 +23,10 @@ easy_admin:
                     - { property: 'product_id', label: 'Идентификатор продукта' }
                     - { type: 'tab' , label: 'Цели' }
                     - { property: 'gtm', label: 'GTM' }
+        Generic:
+            label: 'Генераторы'
+            class: App\Entity\Generic
+            controller: App\Controller\Admin\GenericController
     design:
         brand_color: 'black'
         form_theme:
@@ -32,6 +36,7 @@ easy_admin:
         menu:
           - Users
           - Page
+          - Generic
         assets:
             css:
                 - '/bundles/lp/css/lp.css'

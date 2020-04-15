@@ -1,0 +1,261 @@
+{% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
+{% extends _entity_config.templates.layout %}
+
+{% block content_title %}
+    {{ _entity_config.name }}
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="form-group">
+            <label for="title">Заголовок</label>
+            <input type="text" class="form-control" id="title" placeholder="">
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="id1">Идентификатор</label>
+                <input type="text" class="form-control" id="id1" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="name1">Наименование</label>
+                <input type="text" class="form-control" id="name1">
+            </div>
+            <div class="form-group">
+                <label for="image1">Изображение</label>
+                <input type="text" class="form-control" id="image1" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="description1">Описание</label>
+                <input type="text" class="form-control" id="description1" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="price1">Цена</label>
+                <input type="text" class="form-control" id="price1" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="id2">Идентификатор</label>
+                <input type="text" class="form-control" id="id2">
+            </div>
+            <div class="form-group">
+                <label for="name2">Наименование</label>
+                <input type="text" class="form-control" id="name2">
+            </div>
+            <div class="form-group">
+                <label for="image2">Изображение</label>
+                <input type="text" class="form-control" id="image2">
+            </div>
+            <div class="form-group">
+                <label for="description2">Описание</label>
+                <input type="text" class="form-control" id="description2">
+            </div>
+            <div class="form-group">
+                <label for="price2">Цена</label>
+                <input type="text" class="form-control" id="price2">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="id3">Идентификатор</label>
+                <input type="text" class="form-control" id="id3">
+            </div>
+            <div class="form-group">
+                <label for="name3">Наименование</label>
+                <input type="text" class="form-control" id="name3">
+            </div>
+            <div class="form-group">
+                <label for="image3">Изображение</label>
+                <input type="text" class="form-control" id="image3">
+            </div>
+            <div class="form-group">
+                <label for="description3">Описание</label>
+                <input type="text" class="form-control" id="description3">
+            </div>
+            <div class="form-group">
+                <label for="price3">Цена</label>
+                <input type="text" class="form-control" id="price3">
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary">Сгенерировать</button>
+    </div>
+
+    <textarea style="width:100%;height:100%;" id="result">
+
+    </textarea>
+    <div style="display: none; width: 500px;" id="show-item">
+        <div>
+        <section id="items-3col" class="bg-color3"
+                 style="background-image: none; background-color: rgb(248, 249, 251); padding-top: 50px; padding-bottom: 60px; border-bottom-width: 1px; border-bottom-color: rgb(232, 232, 232); background-repeat: repeat; background-size: auto; background-attachment: scroll;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-4">
+                        <h2 class="title">${title}</h2>
+                    </div>
+                </div>
+                <div class="row sep-bottom">
+                    <div class="col-sm-4">
+                        <div class="post">
+                            <div class="post-media">
+                                <a class="fancybox-show-item" data-src="#show-item" href="javascript:;" data-id="${id1}">
+                                    <img src="${image1}" alt=""
+                                         class="img-responsive"
+                                         style="width: 348px; height: 348px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
+                                </a>
+                            </div>
+                            <div class="post-content">
+                                <h4 class="title"><a class="fancybox-show-item" data-src="#show-item"
+                                                     href="javascript:;" data-id="${id1}">
+                                        <strong>${name1}<br></strong>
+                                    </a></h4>
+                                <div class="post-desc" style="">
+                                    ${description1}
+                                    <a class="fancybox-show-item" data-src="#show-item" href="javascript:;"
+                                       data-id="${id1}">
+                                        <strong><span style="vertical-align: inherit;" rel="vertical-align: inherit;">Подробнее</span></strong>
+                                    </a></div>
+                                <div class="editContent" style=""><p>
+                                        <strong>
+                                            <span style="vertical-align: inherit;" rel="vertical-align: inherit;">${price1} руб</span>
+                                        </strong>
+                                    </p>
+                                    <hr>
+                                    <strong>
+                                    </strong>
+                                    <p class="add-to-cart" data-product="${id1}" data-name="Маска защитная черная"
+                                       data-price="${price1}"
+                                       data-image="${image1}">
+                                        <strong>
+                                            <a href="javascript:void(0);">В корзину</a></strong>
+                                    </p>
+                                    <p>
+                                        <a href="https://www.ochkov.net/basket/add/${id1}.json?external=1">Заказать на
+                                            сайте</a>
+                                    </p>
+                                    <strong>
+                                    </strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="post">
+                            <div class="post-media">
+                                <a class="fancybox-show-item" data-src="#show-item" href="javascript:;" data-id="${id2}">
+                                    <img src="${image2}" alt=""
+                                         class="img-responsive"
+                                         style="width: 348px; height: 348px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
+                                </a>
+                            </div>
+                            <div class="post-content">
+                                <h4 class="title"><a class="fancybox-show-item" data-src="#show-item"
+                                                     href="javascript:;" data-id="${id2}">
+                                        <strong>${name2}<br></strong>
+                                    </a></h4>
+                                <div class="post-desc" style="">
+                                    ${description2}
+                                    <a class="fancybox-show-item" data-src="#show-item" href="javascript:;"
+                                       data-id="${id2}">
+                                        <strong><span style="vertical-align: inherit;" rel="vertical-align: inherit;">Подробнее</span></strong>
+                                    </a></div>
+                                <div class="editContent" style=""><p>
+                                        <strong>
+                                            <span style="vertical-align: inherit;" rel="vertical-align: inherit;">${price2} руб</span>
+                                        </strong>
+                                    </p>
+                                    <hr>
+                                    <strong>
+                                    </strong>
+                                    <p class="add-to-cart" data-product="${id2}" data-name="Маска защитная черная"
+                                       data-price="${price2}"
+                                       data-image="${image2}">
+                                        <strong>
+                                            <a href="javascript:void(0);">В корзину</a></strong>
+                                    </p>
+                                    <p>
+                                        <a href="https://www.ochkov.net/basket/add/${id2}.json?external=1">Заказать на
+                                            сайте</a>
+                                    </p>
+                                    <strong>
+                                    </strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="post">
+                            <div class="post-media">
+                                <a class="fancybox-show-item" data-src="#show-item" href="javascript:;" data-id="${id3}">
+                                    <img src="${image3}" alt=""
+                                         class="img-responsive"
+                                         style="width: 348px; height: 348px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
+                                </a>
+                            </div>
+                            <div class="post-content">
+                                <h4 class="title"><a class="fancybox-show-item" data-src="#show-item"
+                                                     href="javascript:;" data-id="${id3}">
+                                        <strong>${name3}<br></strong>
+                                    </a></h4>
+                                <div class="post-desc" style="">
+                                    ${description3}
+                                    <a class="fancybox-show-item" data-src="#show-item" href="javascript:;"
+                                       data-id="${id3}">
+                                        <strong><span style="vertical-align: inherit;" rel="vertical-align: inherit;">Подробнее</span></strong>
+                                    </a></div>
+                                <div class="editContent" style=""><p>
+                                        <strong>
+                                            <span style="vertical-align: inherit;" rel="vertical-align: inherit;">${price3} руб</span>
+                                        </strong>
+                                    </p>
+                                    <hr>
+                                    <strong>
+                                    </strong>
+                                    <p class="add-to-cart" data-product="${id3}" data-name="Маска защитная черная"
+                                       data-price="${price3}"
+                                       data-image="${image3}">
+                                        <strong>
+                                            <a href="javascript:void(0);">В корзину</a></strong>
+                                    </p>
+                                    <p>
+                                        <a href="https://www.ochkov.net/basket/add/${id3}.json?external=1">Заказать на
+                                            сайте</a>
+                                    </p>
+                                    <strong>
+                                    </strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </div>
+    <script src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn.btn-primary').click(function () {
+                var data = {
+                    'id1': $('#id1').val(),
+                    'name1': $('#name1').val(),
+                    'image1': $('#image1').val(),
+                    'description1': $('#description1').val(),
+                    'price1': $('#price1').val(),
+                    'id2': $('#id2').val(),
+                    'name2': $('#name2').val(),
+                    'image2': $('#image2').val(),
+                    'description2': $('#description2').val(),
+                    'price2': $('#price2').val(),
+                    'id3': $('#id3').val(),
+                    'name3': $('#name3').val(),
+                    'image3': $('#image3').val(),
+                    'description3': $('#description3').val(),
+                    'price3': $('#price3').val(),
+                    'title': $('#title').val()
+                };
+                var markup = $('#show-item');
+                $.template("movieTemplate", markup);
+                var html = $.tmpl("movieTemplate", data);
+                $('#show-item').html(html);
+                $('#result').val(html.html());
+            });
+        });
+    </script>
+{% endblock main %}
