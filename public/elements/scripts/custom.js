@@ -674,18 +674,22 @@ $(document).ready(function () {
         // submit the form
         if ($(this).valid()) {
             $('#contact_submit').button('loading');
-            var action = $(this).attr('action');
+            var action = '/user/callback';
             $.ajax({
                 url: action,
                 type: 'POST',
                 data: {
-                    contactname: $('#contact_name').val(),
-                    contactemail: $('#contact_email').val(),
-                    contactmessage: $('#contact_message').val()
+                    type: 'one_click_buy',
+                    name: $('#contact_name').val(),
+                    phone: 'no_phone',
+                    email: $('#contact_email').val(),
+                    comment: $('#contact_message').val(),
+                    subscribe: 0
                 },
                 success: function () {
                     $('#contact_submit').button('reset');
                     //Use modal popups to display messages
+                    $('#modalContactSuccess h3').html('Ваша заявка принята!');
                     $('#modalContactSuccess').modal('show');
                 },
                 error: function () {
