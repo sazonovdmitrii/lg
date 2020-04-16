@@ -66,13 +66,27 @@ $(window).load(function () {
         margin: [0, 0, 0, 100],
         beforeLoad: function(e) {
             $('.t754__container').css('display', 'none');
-            // $.get('/test.json', {}, function(response) {
+            // $.get('/test1.json', {}, function(response) {
+                // console.log(response.products.tags);
             $.get('https://www.ochkov.net/api/product_item/' + this.opts.id + '/', {}, function(response) {
                 var markup = $('#show-item');
                 $.template( "movieTemplate", markup );
+                var listing = JSON.parse(response.product.list)[0]['tags'];
+
                 $('#show-item').html($.tmpl( "movieTemplate", response ));
 
+                [22,23].forEach(function(count){
+                    ['left_tag_', 'right_tag_'].forEach(function(tagId) {
+                        if(count in listing) {
+                            var options = '';
+                            listing[count].values.forEach(function(option) {
+                                options += '<option value="' + option + '">' + option + '</option>';
+                            });
+                            $('select[name=' + tagId + count + ']').html(options);
+                        }
 
+                    });
+                });
                 $('.add-to-cart').on('click', function () {
                     var productId = $(this).data('product');
                     var basket = {};

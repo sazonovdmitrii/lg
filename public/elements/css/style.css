@@ -4297,11 +4297,11 @@ input.form-control {
 .t-btn {
     display: inline-block;
     font-family: 'Roboto',Arial,sans-serif;
-    height: 60px;
+    height: 70px;
     border: 0 none;
     font-size: 16px;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 120px;
+    padding-right: 120px;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -4338,7 +4338,7 @@ input.form-control {
     color: #000;
 }
 .t754__price.t754__price-item.t-name.t-name_md {
-    font-size: 25px !important;
+    font-size: 55px !important;
 }
 #custom-css textarea {
     font-size: 12px;
@@ -4445,5 +4445,137 @@ form {
 }
 .lSPager.lSGallery {
     margin: 0 auto !important;
-    margin-top: 20px !important;
+    margin-top: 50px !important
+}
+/*@media (min-width: 768px) {*/
+    .nfe_single-product__recipe {
+        min-height: 128px;
+        flex: 1 1;
+        max-width: 100%;
+        align-items: center;
+    }
+    .nfe_recipe, .nfe_recipe--first {
+        flex-direction: row;
+    }
+    .nfe_recipe, .nfe_recipe--first {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        margin: auto 0;
+    }
+    .nfe_recipe__label {
+        align-self: flex-end;
+        margin-bottom: 11px;
+        width: 81px;
+        text-align: right;
+    }
+    .nfe_recipe__label {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .nfe_recipe__right {
+        flex-direction: row;
+        margin: 0 -5px;
+    }
+.nfe_recipe__right {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.nfe_recipe__col, .nfe_recipe__col--small {
+    padding: 0 5px;
+    margin-bottom: 0;
+    flex-direction: column;
+}
+.nfe_recipe__col, .nfe_recipe__col--small {
+    display: flex;
+    flex: 1 1;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.nfe_recipe__title, .nfe_recipe__title--twice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    flex: 1 1;
+}
+.nfe_recipe__title, .nfe_recipe__title--twice {
+    font-family: PFDinTextCondPro,sans-serif;
+    font-weight: 500;
+    margin-right: 15px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    font-size: 16px;
+    min-height: 1px;
+}
+.nfe_recipe__value {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    position: relative;
+    height: 38px;
+    max-width: 100%;
+}
+.nfe_recipe__value {
+    justify-content: center;
+    width: 100%;
+}
+.nfe_select {
+    position: relative;
+    width: 100%;
+    height: 38px;
+    box-sizing: border-box;
+}
+.nfe_select__inner {
+    position: relative;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    width: 100%;
+    min-width: 80px;
+    height: 38px;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 38px;
+    transition: opacity .2s ease-in-out;
+}
+.nfe_select__inner {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 20px;
+}
+.nfe_single-product__box-inner {
+    flex-direction: row;
+}
+/*}*/
+.nfe_single-product__recipe {
+    padding: 15px 15px;
+    box-sizing: border-box;
+}
+.nfe_recipe select {
+    text-align-last: right;
+}
+.t754__price_old, .t754__price {
+    font-size: 40px;
+    font-weight: bold;
+}
+.t754__price-wrapper {
+    margin-top: -10px;
+}
+@media (min-width: 768px) {
+    .cart-block {
+        margin-left: -35px !important;
+    }
+    .t754__price_old {
+        margin-right: 31px;
+        line-height: 1px;
+    }
 }
