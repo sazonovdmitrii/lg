@@ -114,46 +114,59 @@ $(window).load(function () {
                     var qtys = {};
                     var current_options = {};
 
-                    if($('[name=left_tag_22]').val() == options.right_tag_22 && options.left_tag_23 == options.right_tag_23) {
-                        productId = productId + $('[name=left_tag_22]').val() + options.left_tag_23;
-                        products.push(productId);
-                        qtys[productId] = parseInt(options.left_amount) + parseInt(options.right_amount);
-                        current_options[productId] = {
-                            'tag_22': $('[name=left_tag_22]').val(),
-                            'tag_23': options.left_tag_23
-                        };
+                    if(options.left_amount) {
+                        if($('[name=left_tag_22]').val() == options.right_tag_22 && options.left_tag_23 == options.right_tag_23) {
+                            productId = productId + $('[name=left_tag_22]').val() + options.left_tag_23;
+                            products.push(productId);
+                            qtys[productId] = parseInt(options.left_amount) + parseInt(options.right_amount);
+                            current_options[productId] = {
+                                'tag_22': $('[name=left_tag_22]').val(),
+                                'tag_23': options.left_tag_23
+                            };
+                        } else {
+                            var originalProductId = productId;
+                            productId = originalProductId + options.left_tag_22 + options.left_tag_23
+                            qtys[productId] = options.left_amount;
+
+                            products.push(productId);
+                            current_options[productId] = {
+                                'tag_22': options.left_tag_22,
+                                'tag_23': options.left_tag_23
+                            };
+
+                            productId = originalProductId + options.right_tag_22 + options.right_tag_23
+                            qtys[productId] = options.right_amount;
+                            products.push(productId);
+                            current_options[productId] = {
+                                'tag_22': options.right_tag_22,
+                                'tag_23': options.right_tag_23
+                            };
+                        }
                     } else {
-                        var originalProductId = productId;
-                        productId = originalProductId + options.left_tag_22 + options.left_tag_23
-                        qtys[productId] = options.left_amount;
-
-                        products.push(productId);
-                        current_options[productId] = {
-                            'tag_22': options.left_tag_22,
-                            'tag_23': options.left_tag_23
-                        };
-
-                        productId = originalProductId + options.right_tag_22 + options.right_tag_23
-                        qtys[productId] = options.right_amount;
-                        products.push(productId);
-                        current_options[productId] = {
-                            'tag_22': options.right_tag_22,
-                            'tag_23': options.right_tag_23
-                        };
+                        products.push($(this).data('product'));
                     }
+
                     var name = $(this).data('name');
                     var price = $(this).data('price');
                     var image = $(this).data('image');
                     var id = $(this).data('product');
 
                     products.forEach(function(productId) {
-                        if (productId in basket) {
-                            basket[productId]['qty'] += parseInt(qtys[productId]);
+                        if(options.left_amount) {
+                            if (productId in basket) {
+                                basket[productId]['qty'] += parseInt(qtys[productId]);
+                            } else {
+                                basket[productId] = {};
+                                basket[productId]['qty'] = parseInt(qtys[productId]);
+                            }
                         } else {
-                            basket[productId] = {};
-                            basket[productId]['qty'] = parseInt(qtys[productId]);
+                            if (productId in basket) {
+                                basket[productId]['qty'] += 1;
+                            } else {
+                                basket[productId] = {};
+                                basket[productId]['qty'] = 1;
+                            }
                         }
-
                         basket[productId]['name'] = name;
                         basket[productId]['price'] = price;
                         basket[productId]['image'] = image;
