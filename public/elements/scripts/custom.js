@@ -73,10 +73,20 @@ $(window).load(function () {
                 $.template( "movieTemplate", markup );
                 var listing = JSON.parse(response.product.list)[0]['tags'];
 
-                var options = '';
+                response.is_options = 0;
+
+                [22,23].forEach(function(count){
+                    ['left_tag_', 'right_tag_'].forEach(function(tagId) {
+                        if (count in listing) {
+                            response.is_options = 1;
+                        }
+                    });
+                });
+                $('#show-item').html($.tmpl( "movieTemplate", response ));
                 [22,23].forEach(function(count){
                     ['left_tag_', 'right_tag_'].forEach(function(tagId) {
                         if(count in listing) {
+                            var options = '';
                             listing[count].values.forEach(function(option) {
                                 options += '<option value="' + option + '">' + option + '</option>';
                             });
@@ -85,9 +95,6 @@ $(window).load(function () {
 
                     });
                 });
-                response.is_options = options;
-
-                $('#show-item').html($.tmpl( "movieTemplate", response ));
 
                 $('.add-to-cart').on('click', function () {
                     var productId = $(this).data('product');
@@ -190,6 +197,7 @@ $(window).load(function () {
                     window.closingFancy = function () {
                         parent.$.fancybox.close();
                     }
+                    localStorage.clear();
                     $.fancybox.close();
                     $.fancybox.open('<div class="message"><p>Ваш заказ принят! Мы перезвоним Вам в ближайшее время.</p></div>');
                     setTimeout(closingFancy, 5000);
