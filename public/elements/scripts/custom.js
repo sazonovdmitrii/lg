@@ -85,7 +85,7 @@ $(window).load(function () {
 
                     });
                 });
-                response.options = options;
+                response.is_options = options;
 
                 $('#show-item').html($.tmpl( "movieTemplate", response ));
 

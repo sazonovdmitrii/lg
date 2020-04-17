@@ -146,13 +146,13 @@
 </script>
 
 <div style="display: none; width: 500px;" id="product-markup">
-    <div class="t706__product" data-cart-product-i="${id}{{if options}}${options.tag_22}${options.tag_23}{{/if}}">
+    <div class="t706__product" data-cart-product-i="${id}{{if is_options}}${options.tag_22}${options.tag_23}{{/if}}">
         <div class="t706__product-thumb">
             <div class="t706__product-imgdiv" style="background-image:url(${image});"></div>
         </div>
         <div class="t706__product-title t-descr t-descr_sm">
             ${name}
-            {{if options}}
+            {{if is_options}}
                 <br/>
                 <div class="product-options">
                     <p>Оптическая сила: ${options.tag_22}</p>
@@ -197,7 +197,7 @@
                         ${product.name}
                     </div>
                 </div>
-                {{if options}}
+                {{if is_options}}
                 <div class="nfe_single-product__recipe" data-handle="recipe">
                     <div class="nfe_recipe">
                         <div class="nfe_recipe__label">Левый глаз</div>
@@ -297,7 +297,7 @@
                     <div class="col-md-6 text-right">
                         <div class="t754__price-wrapper" style="font-weight: bold;">
                             {{if old_price != '0.00'}}
-                                <div class="t754__price_old {{if !options}}price-mask{{/if}} t754__price-item t-name t-name_md" style="font-weight:400;">
+                                <div class="t754__price_old {{if !is_options}}price-mask{{/if}} t754__price-item t-name t-name_md" style="font-weight:400;">
                                     <div class="t754__price-value old" field="li_price_old__1586640297983">${old_price}</div>
                                     <div class="t754__price-currency">р.</div>
                                 </div>
