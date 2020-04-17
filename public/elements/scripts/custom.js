@@ -93,18 +93,64 @@ $(window).load(function () {
                     if (localStorage['basket']) {
                         basket = JSON.parse(localStorage['basket']);
                     }
+                    var options = {
+                        left_amount: $('[name=left_amount]').val(),
+                        left_tag_22: $('[name=left_tag_22]').val(),
+                        left_tag_23: $('[name=left_tag_23]').val(),
+                        right_amount: $('[name=right_amount]').val(),
+                        right_tag_22: $('[name=right_tag_22]').val(),
+                        right_tag_23: $('[name=right_tag_23]').val()
+                    };
+                    var products = [];
+                    var qtys = {};
+                    var current_options = {};
 
-                    if (productId in basket) {
-                        basket[productId]['qty'] += 1;
+                    if($('[name=left_tag_22]').val() == options.right_tag_22 && options.left_tag_23 == options.right_tag_23) {
+                        productId = productId + $('[name=left_tag_22]').val() + options.left_tag_23;
+                        products.push(productId);
+                        qtys[productId] = parseInt(options.left_amount) + parseInt(options.right_amount);
+                        current_options[productId] = {
+                            'tag_22': $('[name=left_tag_22]').val(),
+                            'tag_23': options.left_tag_23
+                        };
                     } else {
-                        basket[productId] = {};
-                        basket[productId]['qty'] = 1;
-                    }
+                        productId = productId + options.left_tag_22 + options.left_tag_23
+                        qtys[productId] = options.left_amount;
 
-                    basket[productId]['name'] = $(this).data('name');
-                    basket[productId]['price'] = $(this).data('price');
-                    basket[productId]['image'] = $(this).data('image');
-                    basket[productId]['id'] = $(this).data('product');
+                        products.push(productId);
+                        current_options[productId] = {
+                            'tag_22': options.left_tag_22,
+                            'tag_23': options.left_tag_23
+                        };
+
+                        productId = productId + options.right_tag_22 + options.right_tag_23
+                        qtys[productId] = options.right_amount;
+                        products.push(productId);
+                        current_options[productId] = {
+                            'tag_22': options.right_tag_22,
+                            'tag_23': options.right_tag_23
+                        };
+                    }
+                    var name = $(this).data('name');
+                    var price = $(this).data('price');
+                    var image = $(this).data('image');
+                    var id = $(this).data('product');
+
+                    products.forEach(function(productId) {
+                        if (productId in basket) {
+                            basket[productId]['qty'] += parseInt(qtys[productId]);
+                        } else {
+                            basket[productId] = {};
+                            basket[productId]['qty'] = parseInt(qtys[productId]);
+                        }
+
+                        basket[productId]['name'] = name;
+                        basket[productId]['price'] = price;
+                        basket[productId]['image'] = image;
+                        basket[productId]['id'] = id;
+                        basket[productId]['options'] = current_options[productId];
+                    });
+
                     localStorage['basket'] = JSON.stringify(basket);
                     updateCartItems();
                     $('#cart-fancybox').trigger('click');
@@ -224,23 +270,7 @@ $(window).load(function () {
                 var totalItemPrice = item.qty * item.price;
                 item.totalItemPrice = totalItemPrice;
                 totalPrice += totalItemPrice;
-                var markup = "<div class=\"t706__product\" data-cart-product-i=\"${id}\">\n" +
-                    "                <div class=\"t706__product-thumb\">\n" +
-                    "                    <div class=\"t706__product-imgdiv\"\n" +
-                    "                         style=\"background-image:url(${image});\"></div>\n" +
-                    "                </div>\n" +
-                    "                <div class=\"t706__product-title t-descr t-descr_sm\">${name}</div>\n" +
-                    "                <div class=\"t706__product-plusminus t-descr t-descr_sm\"><span class=\"t706__product-minus\"><img\n" +
-                    "                        src=\"https://static.tildacdn.com/lib/linea/c8eecd27-9482-6c4f-7896-3eb09f6a1091/arrows_circle_minus.svg\"\n" +
-                    "                        style=\"width:16px;height:16px;border:0;\"></span><span\n" +
-                    "                        class=\"t706__product-quantity\">${qty}</span><span class=\"t706__product-plus\"><img\n" +
-                    "                        src=\"https://static.tildacdn.com/lib/linea/c47d1e0c-6880-dc39-ae34-521197f7fba7/arrows_circle_plus.svg\"\n" +
-                    "                        style=\"width:16px;height:16px;border:0;\"></span></div>\n" +
-                    "                <div class=\"t706__product-amount t-descr t-descr_sm\">${totalItemPrice} &nbsp;р.</div>\n" +
-                    "                <div class=\"t706__product-del\"><img\n" +
-                    "                        src=\"https://static.tildacdn.com/lib/linea/1bec3cd7-e9d1-2879-5880-19b597ef9f1a/arrows_circle_remove.svg\"\n" +
-                    "                        style=\"width:20px;height:20px;border:0;\"></div>\n" +
-                    "            </div>";
+                var markup = $('#product-markup').html();
                 $.template( "movieTemplate", markup );
                 $.tmpl( "movieTemplate", item ).appendTo( ".t706__cartwin-products" );
             });
