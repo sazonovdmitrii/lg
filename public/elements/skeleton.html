@@ -146,13 +146,13 @@
 </script>
 
 <div style="display: none; width: 500px;" id="product-markup">
-    <div class="t706__product" data-cart-product-i="${id}{{if is_options}}${options.tag_22}${options.tag_23}{{/if}}">
+    <div class="t706__product" data-cart-product-i="${id}{{if options}}${options.tag_22}${options.tag_23}{{/if}}">
         <div class="t706__product-thumb">
             <div class="t706__product-imgdiv" style="background-image:url(${image});"></div>
         </div>
         <div class="t706__product-title t-descr t-descr_sm">
             ${name}
-            {{if is_options}}
+            {{if options}}
                 <br/>
                 <div class="product-options">
                     <p>Оптическая сила: ${options.tag_22}</p>

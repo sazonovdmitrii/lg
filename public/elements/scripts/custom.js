@@ -66,7 +66,7 @@ $(window).load(function () {
         margin: [0, 0, 0, 100],
         beforeLoad: function(e) {
             $('.t754__container').css('display', 'none');
-            // $.get('/test.json', {}, function(response) {
+            // $.get('/test1.json', {}, function(response) {
                 // console.log(response.products.tags);
             $.get('https://www.ochkov.net/api/product_item/' + this.opts.id + '/', {}, function(response) {
                 var markup = $('#show-item');
@@ -123,7 +123,8 @@ $(window).load(function () {
                             'tag_23': options.left_tag_23
                         };
                     } else {
-                        productId = productId + options.left_tag_22 + options.left_tag_23
+                        var originalProductId = productId;
+                        productId = originalProductId + options.left_tag_22 + options.left_tag_23
                         qtys[productId] = options.left_amount;
 
                         products.push(productId);
@@ -132,7 +133,7 @@ $(window).load(function () {
                             'tag_23': options.left_tag_23
                         };
 
-                        productId = productId + options.right_tag_22 + options.right_tag_23
+                        productId = originalProductId + options.right_tag_22 + options.right_tag_23
                         qtys[productId] = options.right_amount;
                         products.push(productId);
                         current_options[productId] = {
