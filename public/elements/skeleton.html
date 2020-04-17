@@ -197,8 +197,8 @@
                         ${product.name}
                     </div>
                 </div>
+                {{if options}}
                 <div class="nfe_single-product__recipe" data-handle="recipe">
-
                     <div class="nfe_recipe">
                         <div class="nfe_recipe__label">Левый глаз</div>
                         <div class="nfe_recipe__right">
@@ -292,11 +292,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row cart-block">
+                {{/if}}
+                <div class="row cart-block {{if !options}}mask{{/if}}">
                     <div class="col-md-6 text-right">
                         <div class="t754__price-wrapper" style="font-weight: bold;">
                             {{if old_price != '0.00'}}
-                                <div class="t754__price_old t754__price-item t-name t-name_md" style="font-weight:400;">
+                                <div class="t754__price_old {{if !options}}price-mask{{/if}} t754__price-item t-name t-name_md" style="font-weight:400;">
                                     <div class="t754__price-value old" field="li_price_old__1586640297983">${old_price}</div>
                                     <div class="t754__price-currency">р.</div>
                                 </div>

@@ -4578,6 +4578,10 @@ form {
         margin-right: 31px;
         line-height: 1px;
     }
+    .price-mask.t754__price_old {
+        margin-right: 1px;
+    }
+
 }
 .product-options {
     font-size: 11px;
@@ -4585,4 +4589,7 @@ form {
 }
 .product-options p {
     line-height: 4px;
+}
+.cart-block.mask {
+    margin-top: 50px;
 }
