@@ -723,7 +723,7 @@ $(document).ready(function () {
                 url: action,
                 type: 'POST',
                 data: {
-                    type: 'one_click_buy',
+                    type: 'landing',
                     name: $('#contact_name').val(),
                     phone: 'no_phone',
                     email: $('#contact_email').val(),
