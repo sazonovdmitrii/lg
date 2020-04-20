@@ -4575,13 +4575,17 @@ form {
         margin-left: -35px !important;
     }
     .t754__price_old {
-        margin-right: 31px;
+        margin-right: 4px;
         line-height: 1px;
     }
     .price-mask.t754__price_old {
         margin-right: 1px;
     }
-
+}
+@media (max-width: 768px) {
+    .slogan {
+        margin-top: -300px !important;
+    }
 }
 .product-options {
     font-size: 11px;
@@ -4592,4 +4596,11 @@ form {
 }
 .cart-block.mask {
     margin-top: 50px;
+}
+.custom-control label {
+    display: inline-block !important;
+}
+label[for=subscribe] {
+    font-size: 11px;
+    color: darkgrey;
 }
