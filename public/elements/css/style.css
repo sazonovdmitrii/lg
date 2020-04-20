@@ -4600,7 +4600,10 @@ form {
 .custom-control label {
     display: inline-block !important;
 }
-label[for=subscribe] {
+label[for=subscribe],label[for=hidden] {
     font-size: 11px;
     color: darkgrey;
+}
+#hidden {
+    visibility:hidden;
 }
