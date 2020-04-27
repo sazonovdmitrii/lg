@@ -29,6 +29,10 @@
                 <input type="text" class="form-control" id="description1" placeholder="">
             </div>
             <div class="form-group">
+                <label for="price1">Старая цена</label>
+                <input type="text" class="form-control" id="price_old1" placeholder="">
+            </div>
+            <div class="form-group">
                 <label for="price1">Цена</label>
                 <input type="text" class="form-control" id="price1" placeholder="">
             </div>
@@ -51,6 +55,10 @@
                 <input type="text" class="form-control" id="description2">
             </div>
             <div class="form-group">
+                <label for="price1">Старая цена</label>
+                <input type="text" class="form-control" id="price_old2" placeholder="">
+            </div>
+            <div class="form-group">
                 <label for="price2">Цена</label>
                 <input type="text" class="form-control" id="price2">
             </div>
@@ -71,6 +79,10 @@
             <div class="form-group">
                 <label for="description3">Описание</label>
                 <input type="text" class="form-control" id="description3">
+            </div>
+            <div class="form-group">
+                <label for="price1">Старая цена</label>
+                <input type="text" class="form-control" id="price_old3" placeholder="">
             </div>
             <div class="form-group">
                 <label for="price3">Цена</label>
@@ -100,7 +112,7 @@
                                 <a class="fancybox-show-item" data-src="#show-item" href="javascript:;" data-id="${id1}">
                                     <img src="${image1}" alt=""
                                          class="img-responsive"
-                                         style="width: 348px; height: 348px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
+                                         style="width: 313px; height: 310px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
                                 </a>
                             </div>
                             <div class="post-content">
@@ -116,7 +128,10 @@
                                     </a></div>
                                 <div class="editContent" style=""><p>
                                         <strong>
-                                            <span style="vertical-align: inherit;" rel="vertical-align: inherit;">${price1} руб</span>
+                                            <span id="price_old1" style="vertical-align: inherit; text-decoration: line-through;"
+                                                  rel="vertical-align: inherit;">${price_old1} руб руб.</span>
+                                            <span style="vertical-align: inherit;"
+                                                  rel="vertical-align: inherit;">  ${price1} руб руб.</span>
                                         </strong>
                                     </p>
                                     <hr>
@@ -126,7 +141,7 @@
                                        data-price="${price1}"
                                        data-image="${image1}">
                                         <strong>
-                                            <a href="javascript:void(0);">В корзину</a></strong>
+                                            <a href="javascript:void(0);">Купить</a></strong>
                                     </p>
                                     <p>
                                         <a href="https://www.ochkov.net/basket/add/${id1}.json?external=1">Заказать на
@@ -143,7 +158,7 @@
                                 <a class="fancybox-show-item" data-src="#show-item" href="javascript:;" data-id="${id2}">
                                     <img src="${image2}" alt=""
                                          class="img-responsive"
-                                         style="width: 348px; height: 348px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
+                                         style="width: 313px; height: 310px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
                                 </a>
                             </div>
                             <div class="post-content">
@@ -159,7 +174,10 @@
                                     </a></div>
                                 <div class="editContent" style=""><p>
                                         <strong>
-                                            <span style="vertical-align: inherit;" rel="vertical-align: inherit;">${price2} руб</span>
+                                            <span id="price_old2" style="vertical-align: inherit; text-decoration: line-through;"
+                                                  rel="vertical-align: inherit;">${price_old2} руб руб.</span>
+                                            <span style="vertical-align: inherit;"
+                                                  rel="vertical-align: inherit;">  ${price2} руб руб.</span>
                                         </strong>
                                     </p>
                                     <hr>
@@ -169,7 +187,7 @@
                                        data-price="${price2}"
                                        data-image="${image2}">
                                         <strong>
-                                            <a href="javascript:void(0);">В корзину</a></strong>
+                                            <a href="javascript:void(0);">Купить</a></strong>
                                     </p>
                                     <p>
                                         <a href="https://www.ochkov.net/basket/add/${id2}.json?external=1">Заказать на
@@ -186,7 +204,7 @@
                                 <a class="fancybox-show-item" data-src="#show-item" href="javascript:;" data-id="${id3}">
                                     <img src="${image3}" alt=""
                                          class="img-responsive"
-                                         style="width: 348px; height: 348px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
+                                         style="width: 313px; height: 310px; border-radius: 0px; border-color: rgb(85, 85, 85); border-style: none; border-width: 1px;">
                                 </a>
                             </div>
                             <div class="post-content">
@@ -202,7 +220,10 @@
                                     </a></div>
                                 <div class="editContent" style=""><p>
                                         <strong>
-                                            <span style="vertical-align: inherit;" rel="vertical-align: inherit;">${price3} руб</span>
+                                            <span id="price_old3" style="vertical-align: inherit; text-decoration: line-through;"
+                                                  rel="vertical-align: inherit;">${price_old3} руб руб.</span>
+                                            <span style="vertical-align: inherit;"
+                                                  rel="vertical-align: inherit;">  ${price3} руб руб.</span>
                                         </strong>
                                     </p>
                                     <hr>
@@ -212,7 +233,7 @@
                                        data-price="${price3}"
                                        data-image="${image3}">
                                         <strong>
-                                            <a href="javascript:void(0);">В корзину</a></strong>
+                                            <a href="javascript:void(0);">Купить</a></strong>
                                     </p>
                                     <p>
                                         <a href="https://www.ochkov.net/basket/add/${id3}.json?external=1">Заказать на
@@ -238,22 +259,37 @@
                     'image1': $('#image1').val(),
                     'description1': $('#description1').val(),
                     'price1': $('#price1').val(),
+                    'price_old1': $('#price_old1').val(),
                     'id2': $('#id2').val(),
                     'name2': $('#name2').val(),
                     'image2': $('#image2').val(),
                     'description2': $('#description2').val(),
                     'price2': $('#price2').val(),
+                    'price_old2': $('#price_old2').val(),
                     'id3': $('#id3').val(),
                     'name3': $('#name3').val(),
                     'image3': $('#image3').val(),
                     'description3': $('#description3').val(),
                     'price3': $('#price3').val(),
+                    'price_old3': $('#price_old3').val(),
                     'title': $('#title').val()
                 };
                 var markup = $('#show-item');
                 $.template("movieTemplate", markup);
                 var html = $.tmpl("movieTemplate", data);
+
+
                 $('#show-item').html(html);
+                if(!data.price_old1) {
+                    $('#show-item #price_old1').css('display', 'none');
+                }
+                if(!data.price_old2) {
+                    $('#show-item #price_old2').css('display', 'none');
+                }
+                if(!data.price_old3) {
+                    $('#show-item #price_old3').css('display', 'none');
+                }
+
                 $('#result').val(html.html());
             });
         });
