@@ -10,6 +10,22 @@
 /*----------------------------------------------------------------------------------------
                         FONT (OPEN SANS) IMPORT FROM GOOGLE FONTS
 -----------------------------------------------------------------------------------------*/
+@font-face {
+    font-family: 'Circe';
+    src: local('Circe'), url('circe/Circe-Regular.woff2') format('woff2'), url('circe/Circe-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: local('Circe ExtraBold'), local('Circe-ExtraBold'), url('circe/Circe-ExtraBold.woff2') format('woff2'),
+        url('circe/Circe-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
 
 /*----------------------------------------------------------------------------------------
                         COMMON STYLES
