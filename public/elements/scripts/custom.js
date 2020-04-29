@@ -207,7 +207,13 @@ $(window).load(function () {
             $('#checkout').submit(function (event) {
                 $('#comment').val(localStorage['basket']);
                 event.preventDefault();
-                $.post('https://www.ochkov.net/user/callback', ($(this).serializeArray()), function (response) {
+                var data = $(this).serializeArray();
+                data.forEach(function(e){
+                    if(e.name == 'subscribe' || e.name == 'hidden') {
+                        e.value = (e.value == 'on') ? 1 : 0;
+                    }
+                });
+                $.post('https://www.ochkov.net/user/callback', (data), function (response) {
                     window.closingFancy = function () {
                         parent.$.fancybox.close();
                     }
